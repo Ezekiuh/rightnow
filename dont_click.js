@@ -5,15 +5,15 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let drawing = false;
-ctx.lineWidth = 0.5;
+ctx.lineWidth = 0.3;
 ctx.fillStyle = '#262728';
 ctx.strokeStyle = 'azure';
 ctx.shadowOffsetX = 0;
-ctx.shadowOffsetY = 10;
+ctx.shadowOffsetY = 0;
 ctx.shadowBlur = 10;
 ctx.shadowColor = 'rgba(0,0,0,0.25)';
 
-ctx.globalCompositeOperation = 'destination-over';
+/* ctx.globalCompositeOperation = 'destination-over'; ~~ this.size = 0;*/
 
 class Root {
     constructor(x, y){
@@ -21,8 +21,8 @@ class Root {
     this.y = y;
     this.speedX = Math.random() * 4 - 2;
     this.speedY = Math.random() * 4 - 2;
-    this.maxSize = Math.random() * 7 + 20;
-    this.size = 0; /* Math.random() * 1 + 2 */
+    this.maxSize = Math.random() * 35 + 20;
+    this.size = Math.random() * 1 + 2; /* Math.random() * 1 + 2 */
     this.vs = Math.random() * 0.2 + 0.5;
     this.angleX = Math.random() * 6.2;
     this.vax = Math.random() * 0.6 - 0.3;
@@ -44,10 +44,10 @@ class Root {
 
             ctx.save();
             ctx.translate(this.x, this.y);
-            ctx.rotate(this.angle);
-            ctx.fillRect(0 - this.size/2, 0 - this.size/2, this.size, this.size);
+            /* ctx.rotate(this.angle);
+            /* ctx.fillRect(0 - this.size/2, 0 - this.size/2, this.size, this.size); */
             let double = this.size * 2;
-            ctx.strokeRect(0 - double/2, 0 - double/2, double, double);
+            ctx.strokeRect(0, 0, this.size, this.size);
 
             requestAnimationFrame(this.update.bind(this));
             ctx.restore();
@@ -57,7 +57,7 @@ class Root {
 
 window.addEventListener('mousemove', function(e){
     if(drawing){
-        for(let i = 0; i < 3; i++){
+        for(let i = 0; i < 0.1; i++){
         const root = new Root(e.x, e.y);
         root.update();
         }
@@ -65,7 +65,7 @@ window.addEventListener('mousemove', function(e){
 });
 window.addEventListener('mousedown', function(e){
     drawing = true;
-    for(let i = 0; i < 30; i++){
+    for(let i = 0; i < 1; i++){ /* (let i = 0; i < X; i++) X= number spawned per click (not stroke)*/
         const root = new Root(e.x, e.y);
         root.update();
         }
