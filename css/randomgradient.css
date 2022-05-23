@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+    body {
+        overflow: hidden; /* Hide scrollbars */
+}
+  
+    :root {
+        --color-1: #eee;
+        --color-2: #000;
+        --gradient-direction: to right;
+}
+  
+    #gradient-background {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            var(--gradient-direction),
+            var(--color-1),
+            var(--color-2)
+            );
+        transition: 0.5s;
+}
+  
+  #color-1-display,
+  #color-2-display {
+        width: 0.8em;
+        height: 0.8em;
+        margin: 0 0.2em;
+        border-top: 5px solid #262728;
+        display: inline-block;
+}
+  
+  #color-1-display {
+        color: azure;
+        background-color: var(--color-1);
+}
+  
+  #color-2-display {
+        color: azure;
+        background-color: var(--color-2);
+}
+  button {
+        border: 1px solid azure;
+        color: azure;
+        background-color:#262728;;
+        font-family: courier;
+        padding: 2px;
+}
+    button:active {
+        border: 1px solid yellow;
+        color: yellow;
+        background-color:#262728;;
+        font-family: courier;
+        padding: 2px;
+}
+  
+    .gradient-text {
+        color: azure;
+        font-family: courier;
+}
